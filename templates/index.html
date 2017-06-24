@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <div class="container">    
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Stock Name</th>
+                    <th>Price</th> 
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{item.stock_name}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.total}}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="3">Cash</td>
+                    <td>${{'%0.2f'| format(cash)}}</td>
+                </tr>
+            </tbody>
+            
+            <tfoot>
+                <tr>
+                    <td colspan="3">Grand Total</td>
+                    <td>${{'%0.2f'| format(grand_total)}}</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+{% endblock %}
